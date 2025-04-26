@@ -1,4 +1,4 @@
-from .base_agent import BaseAgent
+from base_agent import BaseAgent
 from llm_utils import process_structured_output
 from db_utils import get_documents, update_loan_application_state
 
