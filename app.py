@@ -51,7 +51,7 @@ st.markdown("### Multi-Agent System with A2A Communication")
 
 # Sidebar
 st.sidebar.header("Navigation")
-page = st.sidebar.radio("Go to", ["New Application", "Track Application", "System Dashboard"])
+page = st.sidebar.radio("Go to", ["New Application", "Track Application"])
 
 if page == "New Application":
     st.header("New Loan Application")
@@ -224,30 +224,3 @@ elif page == "Track Application":
                     st.warning("No validation assessment available yet")
         else:
             st.error("Application not found")
-
-elif page == "System Dashboard":
-    st.header("System Dashboard")
-    
-    # Display agents
-    st.subheader("AI Agents")
-    agents = [application_agent, document_agent]
-    
-    for agent in agents:
-        with st.expander(agent.name):
-            st.write(f"**Description:** {agent.description}")
-            st.write("**Capabilities:**")
-            for capability in agent.get_capabilities():
-                st.write(f"- {capability}")
-    
-    # Display A2A protocol stats
-    st.subheader("A2A Protocol Statistics")
-    col1, col2 = st.columns(2)
-    with col1:
-        st.metric("Registered Agents", len(protocol.agent_registry))
-    with col2:
-        st.metric("Active Tasks", len(protocol.task_registry))
-    
-    # Display state machine visualization
-    st.subheader("State Machine")
-    for state, transitions in state_machine.transitions.items():
-        st.write(f"**{state}** → {', '.join(transitions)}")
