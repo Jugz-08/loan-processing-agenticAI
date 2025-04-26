@@ -79,13 +79,13 @@ class DocumentVerificationAgent(BaseAgent):
         
         result = process_structured_output(prompt, system_message, output_structure)
         
-        # if not result:
-        #     # Default response if LLM fails
-        #     return {
-        #         "verification_status": "NEEDS_REVIEW",
-        #         "confidence_score": 0.0,
-        #         "verification_notes": "Error processing document",
-        #         "detected_issues": ["Error processing document"]
-        #     }
+        if not result:
+            # Default response if LLM fails
+            return {
+                "verification_status": "NEEDS_REVIEW",
+                "confidence_score": 0.0,
+                "verification_notes": "Error processing document",
+                "detected_issues": ["Error processing document"]
+            }
         
         return result
