@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import datetime
-from .models import Base, Applicant, LoanApplication, Document, AgentInteraction
+from models import Base, Applicant, LoanApplication, Document, AgentInteraction
 from config import DATABASE_URL
 
 # Create engine and session
