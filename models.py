@@ -7,6 +7,7 @@ Base = declarative_base()
 
 class Applicant(Base):
     __tablename__ = "applicants"
+    __table_args__ = {'prefixes': ['IF NOT EXISTS']}
     
     id = Column(Integer, primary_key=True)
     name = Column(String(255), nullable=False)
