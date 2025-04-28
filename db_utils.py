@@ -7,6 +7,7 @@ from config import DATABASE_URL
 # Create engine and session
 engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
+_initialized = False
 
 def init_db():
     """Initialize the database, creating all tables"""
