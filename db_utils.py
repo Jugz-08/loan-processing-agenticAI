@@ -10,7 +10,10 @@ Session = sessionmaker(bind=engine)
 
 def init_db():
     """Initialize the database, creating all tables"""
-    Base.metadata.create_all(engine)
+    global _initialized
+    if not _initialized:
+        Base.metadata.create_all(engine, checkfirst=True)
+        _initialized = True
 
 def get_session():
     """Get a new database session"""
